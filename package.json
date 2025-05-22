@@ -11,7 +11,7 @@
     "cyo": "npx cypress open",
     "cyr": "npx cypress run --browser chrome",
     "tst:cyo": "concurrently \"npm run dev\" \"wait-on http://localhost:5173/ && npm run cyo\"",
-    "tst:cyr": "concurrently \"npm run dev\" \"wait-on http://localhost:5173/ && npm run cyr\""
+    "tst:cyr": "concurrently -k \"npm run dev\" \"wait-on http://localhost:5173/ && npm run cyr\""
   },
   "dependencies": {
     "react": "^19.1.0",
