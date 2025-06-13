@@ -4,44 +4,36 @@ describe('Testing tic-tac-toe game', () => {
     cy.visit('/');
   });
 
-  describe('Check if elements are visible', () => {
-    it('passes', () => {
+  describe('Page visibility', () => {
+    it('Check if elements are visible', () => {
       cy.get('.status').should('contain', 'Kitas žaidėjas');
       cy.get('.board').should('be.visible');
       cy.get('.reset-button').should('contain', 'Pradėti iš naujo');
     });
-  });
 
-  describe('Check if winner status is visible (vertical line)', () => {
-    it('passes', () => {
+    it('Check if winner status is visible (vertical line)', () => {
       cy.verticalWinner();
       cy.get('.status').should('contain', 'Laimėjo: X');
     });
-  });
 
-  describe('Check if winner status is visible (horizontal line)', () => {
-    it('passes', () => {
+    it('Check if winner status is visible (horizontal line)', () => {
       cy.horizontalWinner();
       cy.get('.status').should('contain', 'Laimėjo: X');
     });
-  });
 
-  describe('Check if winner status is visible (diagonally - left to right)', () => {
-    it('passes', () => {
+    it('Check if winner status is visible (diagonally - left to right)', () => {
       cy.diagonalWinnerLtoR();
       cy.get('.status').should('contain', 'Laimėjo: X');
     });
-  });
 
-  describe('Check if winner status is visible (diagonally - right to left)', () => {
-    it('passes', () => {
+    it('Check if winner status is visible (diagonally - right to left)', () => {
       cy.diagonalWinnerRtoL();
       cy.get('.status').should('contain', 'Laimėjo: X');
     });
   });
 
-  describe('Check if reset button works', () => {
-    it('passes', () => {
+  describe('Reset button functionality', () => {
+    it('Check if reset button works', () => {
       cy.get('.square').eq(0).click(); // x moves
       cy.get('.square').eq(1).click(); // o moves
 
@@ -56,8 +48,8 @@ describe('Testing tic-tac-toe game', () => {
     });
   });
 
-  describe('Check if you can press already used square', () => {
-    it('passes', () => {
+  describe('Game functionality', () => {
+    it('Check if you can press already used square', () => {
 
       cy.get('.status').should('contain', 'Kitas žaidėjas: X');
 
@@ -70,10 +62,8 @@ describe('Testing tic-tac-toe game', () => {
       cy.get('.square').eq(0).should('contain', 'X');
 
     });
-  });
 
-  describe('Check if you can continue game after win', () => {
-    it('passes', () => {
+    it('Check if you can continue game after win', () => {
 
       cy.verticalWinner();
       cy.get('.status').should('contain', 'Laimėjo: X');
@@ -89,10 +79,8 @@ describe('Testing tic-tac-toe game', () => {
       cy.get('.status').should('contain', 'Laimėjo: X');
 
     });
-  });
 
-  describe('Check if player turn shown correctly', () => {
-    it('passes', () => {
+    it('Check if player turn shown correctly', () => {
 
       cy.get('.status').should('contain', 'Kitas žaidėjas: X');
       cy.get('.square').eq(0).click();
@@ -112,8 +100,8 @@ describe('Testing tic-tac-toe game', () => {
 
   });
 
-  describe('Check if draw status is shown', () => {
-    it('passes', () => {
+  describe('Draw status', () => {
+    it('Check if draw status is shown', () => {
 
       cy.drawGame();
       cy.get('.status').should('contain', 'Lygiosios!');
